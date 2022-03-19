@@ -29,3 +29,4 @@ kernel_release () {
 }
 
 kernel_upload
+kernel_release
