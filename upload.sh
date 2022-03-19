@@ -21,4 +21,9 @@ kernel_upload () {
     verbosity $download_link
 }
 
+kernel_release () {
+    gh auth login --with-token $GITHUB_TOKEN
+    gh release create $release_tag $workdir/linux.7z $workdir/download_link.txt --generate-notes
+}
+
 kernel_upload
