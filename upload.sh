@@ -16,9 +16,9 @@ verbosity () {
 
 kernel_upload () {
     release_tag=$(cat $workdir/release_tag)
-    curl --no-progress-meter -o $workdir/download_link.txt -T $workdir/linux.7z "https://oshi.at/$release_tag.7z?expire=43200" | sed -n '3p' | sed 's/ \[Download\]//'
-    download_link=$(cat $workdir/download_link.txt)
-    verbosity $download_link
+    curl --no-progress-meter -T $workdir/linux.7z "https://oshi.at/$release_tag.7z?expire=43200"
+    #download_link=$(cat $workdir/download_link.txt)
+    #verbosity $download_link
 }
 
 kernel_upload
