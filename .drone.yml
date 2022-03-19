@@ -9,6 +9,12 @@ platform:
 clone:
   depth: 1
   
+trigger:
+  event:
+    exclude:
+    - push
+    - pull_request
+  
 steps:
 - name: Build
   image: x0rzavi/gentoo-kernel:latest
