@@ -8,10 +8,6 @@ set -e
 # Description: Build xanmod kernel on gentoo
 # Dependencies: 7z, lz4
 
-ls
-pwd
-ls /
-
 workdir=$(pwd)
 verbosity () {
     echo -e "\n\n***********************************************"
