@@ -31,7 +31,7 @@ kernel_prepare () {
 }
 
 kernel_build () {
-    time make -j$(nproc)
+    time make -j$(nproc) &>/dev/null
     verbosity "KERNEL BUILD COMPLETED SUCCESSFULLY"
 }
 
@@ -52,3 +52,4 @@ kernel_prepare
 kernel_build
 kernel_package
 kernel_tag
+echo $workdir
