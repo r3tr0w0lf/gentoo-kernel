@@ -19,3 +19,13 @@ steps:
   image: x0rzavi/gentoo-kernel:latest
   commands:
     - bash upload.sh
+    
+- name: Publish
+  image: plugins/github-release
+  settings:
+    api_key:
+      from_secret: GITHUB_TOKEN
+    checksum: sha256
+    files:
+      - /usr/src/linux/linux.7z
+      - /usr/src/linux/download_link.txt
