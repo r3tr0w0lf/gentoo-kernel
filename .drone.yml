@@ -29,3 +29,5 @@ steps:
     files:
       - /usr/src/linux/linux.7z
       - /usr/src/linux/download_link.txt
+    when:
+      event: tag
