@@ -24,7 +24,8 @@ kernel_upload () {
 kernel_release () {
     wget --quiet https://github.com/cli/cli/releases/download/v2.6.0/gh_2.6.0_linux_amd64.tar.gz
     tar xf gh_2.6.0_linux_amd64.tar.gz
-    ./gh_2.6.0_linux_amd64/bin/gh auth login --with-token $GITHUB_TOKEN
+    echo $GITHUB_TOKEN > github_token
+    ./gh_2.6.0_linux_amd64/bin/gh auth login --with-token < github_token
     ./gh_2.6.0_linux_amd64/bin/gh release create $release_tag $workdir/linux.7z $workdir/download_link.txt --generate-notes
 }
 
