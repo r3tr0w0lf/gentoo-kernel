@@ -36,7 +36,7 @@ kernel_build () {
 }
 
 kernel_package () {
-    time 7z a -t7z linux.7z /usr/src/linux-* &>/dev/null
+    time 7z a -t7z $workdir/linux.7z /usr/src/linux-* &>/dev/null
     verbosity "KERNEL PACKGING COMPLETED SUCCESSFULLY"
 }
 
