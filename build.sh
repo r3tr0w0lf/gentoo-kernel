@@ -10,6 +10,7 @@ set -e
 
 ls
 pwd
+ls /
 
 workdir=$(pwd)
 verbosity () {
