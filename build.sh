@@ -31,12 +31,12 @@ kernel_prepare () {
 }
 
 kernel_build () {
-    time make -j$(nproc) &>/dev/null
+    make -j$(nproc) &>/dev/null
     verbosity "KERNEL BUILD COMPLETED SUCCESSFULLY"
 }
 
 kernel_package () {
-    time 7z a -t7z $workdir/linux.7z /usr/src/linux-* &>/dev/null
+    7z a -t7z $workdir/linux.7z /usr/src/linux-* &>/dev/null
     verbosity "KERNEL PACKGING COMPLETED SUCCESSFULLY"
 }
 
