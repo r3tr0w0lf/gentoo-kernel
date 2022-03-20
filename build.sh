@@ -20,7 +20,7 @@ kernel_prepare () {
     cp CONFIGS/xanmod/gcc/config .config
     for patch in $workdir/patches/*
     do
-        patch < $patch
+        patch < $patch &>/dev/null
     done
     #wget -O .config --quiet https://raw.githubusercontent.com/x0rzavi/gentoo-bits/main/config-5.16.14-gentoo-x0rzavi
     time make -j$(nproc) olddefconfig &>/dev/null
