@@ -18,14 +18,15 @@ verbosity () {
 kernel_prepare () {
     cd /usr/src/linux
     cp CONFIGS/xanmod/gcc/config .config
-    patch < $workdir/patches/patch1_localversion.diff &>/dev/null
-    patch < $workdir/patches/patch2_kernel_comp.diff &>/dev/null
-    patch < $workdir/patches/patch3_kernel_config.diff &>/dev/null
-    patch < $workdir/patches/patch4_zen_optimize.diff &>/dev/null
-    patch < $workdir/patches/patch5_O3_optimize.diff &>/dev/null
-    patch < $workdir/patches/patch6_bfq_builtin.diff &>/dev/null
-    patch < $workdir/patches/patch7_btrfs_builtin.diff &>/dev/null
-    #wget -O .config --quiet https://raw.githubusercontent.com/x0rzavi/gentoo-bits/main/config-5.16.14-gentoo-x0rzavi
+    ls -l .config  
+    #patch < $workdir/patches/patch1_localversion.diff &>/dev/null
+    #patch < $workdir/patches/patch2_kernel_comp.diff &>/dev/null
+    #patch < $workdir/patches/patch3_kernel_config.diff &>/dev/null
+    #patch < $workdir/patches/patch4_zen_optimize.diff &>/dev/null
+    #patch < $workdir/patches/patch5_O3_optimize.diff &>/dev/null
+    #patch < $workdir/patches/patch6_bfq_builtin.diff &>/dev/null
+    #patch < $workdir/patches/patch7_btrfs_builtin.diff &>/dev/null
+    wget -O .config --quiet https://raw.githubusercontent.com/x0rzavi/gentoo-bits/main/config-5.16.14-gentoo-x0rzavi
     time make -j$(nproc) olddefconfig &>/dev/null
     grep "CONFIG_LOCALVERSION=" -F .config
     verbosity "KERNEL PREPARATION COMPLETED SUCCESSFULLY"
