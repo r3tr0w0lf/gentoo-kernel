@@ -27,6 +27,7 @@ kernel_prepare () {
     patch < $workdir/patches/patch7_btrfs_builtin.diff &>/dev/null
     #wget -O .config --quiet https://raw.githubusercontent.com/x0rzavi/gentoo-bits/main/config-5.16.14-gentoo-x0rzavi
     time make -j$(nproc) olddefconfig &>/dev/null
+    echo ""
     grep "CONFIG_LOCALVERSION=" -F .config
     verbosity "KERNEL PREPARATION COMPLETED SUCCESSFULLY"
 }
