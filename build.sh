@@ -18,15 +18,16 @@ verbosity () {
 kernel_prepare () {
     cd /usr/src/linux
     cp CONFIGS/xanmod/gcc/config .config
-    patch < $workdir/patches/patch1_localversion.diff
-    patch < $workdir/patches/patch2_kernel_comp.diff
-    patch < $workdir/patches/patch3_kernel_config.diff
-    patch < $workdir/patches/patch4_zen_optimize.diff
-    patch < $workdir/patches/patch5_O3_optimize.diff
-    patch < $workdir/patches/patch6_bfq_builtin.diff
-    patch < $workdir/patches/patch7_btrfs_builtin.diff
+    patch < $workdir/patches/patch1_localversion.diff &>/dev/null
+    patch < $workdir/patches/patch2_kernel_comp.diff &>/dev/null
+    patch < $workdir/patches/patch3_kernel_config.diff &>/dev/null
+    patch < $workdir/patches/patch4_zen_optimize.diff &>/dev/null
+    patch < $workdir/patches/patch5_O3_optimize.diff &>/dev/null
+    patch < $workdir/patches/patch6_bfq_builtin.diff &>/dev/null
+    patch < $workdir/patches/patch7_btrfs_builtin.diff &>/dev/null
     #wget -O .config --quiet https://raw.githubusercontent.com/x0rzavi/gentoo-bits/main/config-5.16.14-gentoo-x0rzavi
-    make -j$(nproc) olddefconfig &>/dev/null
+    time make -j$(nproc) olddefconfig &>/dev/null
+    grep "CONFIG_LOCALVERSION=" -F .config
     verbosity "KERNEL PREPARATION COMPLETED SUCCESSFULLY"
 }
 
@@ -37,7 +38,7 @@ kernel_build () {
 
 kernel_package () {
     time 7z a -t7z $workdir/linux.7z /usr/src/linux-* &>/dev/null
-    verbosity "KERNEL PACKGING COMPLETED SUCCESSFULLY"
+    verbosity "KERNEL PACKAGING COMPLETED SUCCESSFULLY"
 }
 
 kernel_tag () {

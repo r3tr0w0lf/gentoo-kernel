@@ -5,7 +5,8 @@ trap "exit" INT
 set -e
 
 # Author: https://github.com/x0rzavi
-# Description: Temporarily upload built kernel archive to https://oshi.at/
+# Description: Release to github and temporarily upload built kernel archive to https://temp.sh/
+# Dependencies: github-cli
 
 workdir=$(pwd)
 verbosity () {
@@ -22,11 +23,9 @@ kernel_upload () {
 }
 
 kernel_release () {
-    wget --quiet https://github.com/cli/cli/releases/download/v2.6.0/gh_2.6.0_linux_amd64.tar.gz
-    tar xf gh_2.6.0_linux_amd64.tar.gz
     echo $GITHUB_CLI_TOKEN > github_cli_token
-    ./gh_2.6.0_linux_amd64/bin/gh auth login --with-token < github_cli_token
-    ./gh_2.6.0_linux_amd64/bin/gh release create $release_tag $workdir/linux.7z $workdir/download_link.txt --generate-notes
+    gh auth login --with-token < github_cli_token
+    gh release create $release_tag $workdir/linux.7z $workdir/download_link.txt --generate-notes
 }
 
 kernel_upload

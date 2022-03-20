@@ -26,6 +26,6 @@ steps:
   image: x0rzavi/gentoo-kernel:latest
   environment: 
     GITHUB_CLI_TOKEN:
-      from_secret: GITHUB_TOKEN
+      from_secret: GITHUB_CLI_TOKEN
   commands:
     - bash upload.sh
