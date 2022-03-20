@@ -15,12 +15,12 @@ verbosity () {
     echo -e "***********************************************\n\n"
 }
 
-kernel_upload () {
-    release_tag=$(cat $workdir/release_tag)
-    curl --no-progress-meter -T $workdir/linux.7z temp.sh > $workdir/download_link.txt
-    download_link=$(cat $workdir/download_link.txt)
-    verbosity $download_link
-}
+#kernel_upload () {
+#    release_tag=$(cat $workdir/release_tag)
+#    curl --no-progress-meter -T $workdir/linux.7z temp.sh > $workdir/download_link.txt
+#    download_link=$(cat $workdir/download_link.txt)
+#    verbosity $download_link
+#}
 
 kernel_release () {
     echo $GITHUB_CLI_TOKEN > github_cli_token
@@ -28,5 +28,5 @@ kernel_release () {
     gh release create $release_tag $workdir/linux.7z $workdir/download_link.txt --generate-notes
 }
 
-kernel_upload
+#kernel_upload
 kernel_release
