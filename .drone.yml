@@ -22,7 +22,7 @@ steps:
   commands:
     - bash build.sh
     
-- name: Upload
+- name: Release
   image: x0rzavi/gentoo-kernel:latest
   environment: 
     GITHUB_CLI_TOKEN:
