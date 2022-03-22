@@ -1,18 +1,6 @@
---- .config.old	2022-03-19 00:22:28.834945734 +0530
-+++ .config	2022-03-19 00:22:42.480945423 +0530
-@@ -2,9 +2,9 @@
- # Automatically generated file; DO NOT EDIT.
- # Linux/x86 5.16.12 Kernel Configuration
- #
--CONFIG_CC_VERSION_TEXT="gcc-11 (Debian 11.2.0-12) 11.2.0"
-+CONFIG_CC_VERSION_TEXT="gcc (Gentoo 11.2.1_p20220115 p4) 11.2.1 20220115"
- CONFIG_CC_IS_GCC=y
--CONFIG_GCC_VERSION=110200
-+CONFIG_GCC_VERSION=110201
- CONFIG_CLANG_VERSION=0
- CONFIG_AS_IS_GNU=y
- CONFIG_AS_VERSION=23700
-@@ -27,7 +27,7 @@
+--- .config.old	2022-03-22 19:13:48.923710851 +0530
++++ .config	2022-03-22 19:14:24.199267378 +0530
+@@ -29,7 +29,7 @@
  CONFIG_INIT_ENV_ARG_LIMIT=32
  # CONFIG_COMPILE_TEST is not set
  # CONFIG_WERROR is not set
@@ -21,46 +9,3 @@
  # CONFIG_LOCALVERSION_AUTO is not set
  CONFIG_BUILD_SALT=""
  CONFIG_HAVE_KERNEL_GZIP=y
-@@ -891,6 +891,9 @@
- # end of GCOV-based kernel profiling
- 
- CONFIG_HAVE_GCC_PLUGINS=y
-+CONFIG_GCC_PLUGINS=y
-+# CONFIG_GCC_PLUGIN_LATENT_ENTROPY is not set
-+# CONFIG_GCC_PLUGIN_RANDSTRUCT is not set
- # end of General architecture-dependent options
- 
- CONFIG_RT_MUTEXES=y
-@@ -10657,6 +10660,10 @@
- # Memory initialization
- #
- CONFIG_INIT_STACK_NONE=y
-+# CONFIG_GCC_PLUGIN_STRUCTLEAK_USER is not set
-+# CONFIG_GCC_PLUGIN_STRUCTLEAK_BYREF is not set
-+# CONFIG_GCC_PLUGIN_STRUCTLEAK_BYREF_ALL is not set
-+# CONFIG_GCC_PLUGIN_STACKLEAK is not set
- CONFIG_INIT_ON_ALLOC_DEFAULT_ON=y
- # CONFIG_INIT_ON_FREE_DEFAULT_ON is not set
- CONFIG_CC_HAS_ZERO_CALL_USED_REGS=y
-@@ -11396,3 +11403,21 @@
- # CONFIG_HYPERV_TESTING is not set
- # end of Kernel Testing and Coverage
- # end of Kernel hacking
-+
-+#
-+# Gentoo Linux
-+#
-+CONFIG_GENTOO_LINUX=y
-+CONFIG_GENTOO_LINUX_UDEV=y
-+CONFIG_GENTOO_LINUX_PORTAGE=y
-+
-+#
-+# Support for init systems, system and service managers
-+#
-+CONFIG_GENTOO_LINUX_INIT_SCRIPT=y
-+# CONFIG_GENTOO_LINUX_INIT_SYSTEMD is not set
-+# end of Support for init systems, system and service managers
-+
-+# CONFIG_GENTOO_KERNEL_SELF_PROTECTION is not set
-+CONFIG_GENTOO_PRINT_FIRMWARE_INFO=y
-+# end of Gentoo Linux
