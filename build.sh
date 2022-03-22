@@ -18,14 +18,13 @@ verbosity () {
 kernel_prepare () {
     cd /usr/src/linux
     cp CONFIGS/xanmod/gcc/config .config
+    time make -j$(nproc) olddefconfig &>/dev/null
     for patch in $workdir/patches/*
     do
-        patch < $patch &>/dev/null
+        patch < $patch
     done
     #wget -O .config --quiet https://raw.githubusercontent.com/x0rzavi/gentoo-bits/main/config-5.16.14-gentoo-x0rzavi
-    time make -j$(nproc) olddefconfig &>/dev/null
     echo ""
-    grep "CONFIG_LOCALVERSION=" -F .config
     verbosity "KERNEL PREPARATION COMPLETED SUCCESSFULLY"
 }
 
