@@ -24,8 +24,17 @@ kernel_prepare () {
         patch < $patch
     done
     #wget -O .config --quiet https://raw.githubusercontent.com/x0rzavi/gentoo-bits/main/config-5.16.14-gentoo-x0rzavi
+	grep "CONFIG_LOCALVERSION=" -F .config
     echo ""
     verbosity "KERNEL PREPARATION COMPLETED SUCCESSFULLY"
+}
+
+kernel_tag () {
+    version=$(grep 'Linux/x86' /usr/src/linux/.config | sed 's/# Linux\/x86 /linux-/;s/ Kernel Configuration/-xanmod/')
+    seconds=$(stat -c '%X' /usr/src/linux/.config)
+    tag="$version-$seconds"
+    echo $tag > $workdir/release_tag
+    verbosity "KERNEL BUILD RELEASE TAG: $tag"
 }
 
 kernel_build () {
@@ -38,15 +47,7 @@ kernel_package () {
     verbosity "KERNEL PACKAGING COMPLETED SUCCESSFULLY"
 }
 
-kernel_tag () {
-    version=$(grep 'Linux/x86' /usr/src/linux/.config | sed 's/# Linux\/x86 /linux-/;s/ Kernel Configuration/-xanmod/')
-    seconds=$(stat -c '%X' /usr/src/linux/.config)
-    tag="$version-$seconds"
-    echo $tag > $workdir/release_tag
-    verbosity "KERNEL BUILD RELEASE TAG WAS SET SUCCESSFULLY"
-}
-
 kernel_prepare
+kernel_tag
 kernel_build
 kernel_package
-kernel_tag
