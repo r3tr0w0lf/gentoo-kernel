@@ -18,11 +18,11 @@ verbosity () {
 kernel_prepare () {
     cd /usr/src/linux
     cp CONFIGS/xanmod/gcc/config_x86-64-v3 .config
+    touch test
     whoami
     id
     ls -lah
-    touch test
-    time make -j$(nproc) olddefconfig
+    make -j$(nproc) olddefconfig
     for patch in $workdir/patches/*
     do
         patch < $patch
