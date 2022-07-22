@@ -18,8 +18,8 @@ verbosity () {
 kernel_prepare () {
     cd /usr/src/linux
     cp CONFIGS/xanmod/gcc/config_x86-64-v3 .config
-    echo $PATH
-    time make -j$(nproc) olddefconfig
+    bash ls
+    time SHELL=/bin/bash make -j$(nproc) olddefconfig
     for patch in $workdir/patches/*
     do
         patch < $patch
