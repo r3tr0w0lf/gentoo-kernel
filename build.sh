@@ -18,11 +18,11 @@ verbosity () {
 kernel_prepare () {
     cd /usr/src/linux
     cp CONFIGS/xanmod/gcc/config_x86-64-v3 .config
+    ls
+    pwd
     time make -j$(nproc) olddefconfig &>/dev/null
-    echo "test1"
     for patch in $workdir/patches/*
     do
-    	echo "test1"
         patch < $patch
     done
     #wget -O .config --quiet https://raw.githubusercontent.com/x0rzavi/gentoo-bits/main/config-5.16.14-gentoo-x0rzavi
