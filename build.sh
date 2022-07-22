@@ -22,6 +22,7 @@ kernel_prepare () {
     whoami
     id
     ls -lah
+    /bin/sh ls
     make -j$(nproc) olddefconfig
     for patch in $workdir/patches/*
     do
