@@ -17,7 +17,7 @@ verbosity () {
 
 kernel_prepare () {
     cd /usr/src/linux
-    cp CONFIGS/xanmod/gcc/config .config
+    cp CONFIGS/xanmod/gcc/config_x86-64-v3 .config
     time make -j$(nproc) olddefconfig &>/dev/null
     for patch in $workdir/patches/*
     do
