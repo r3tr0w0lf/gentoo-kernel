@@ -20,7 +20,7 @@ steps:
 - name: Build
   image: x0rzavi/gentoo-kernel:latest
   commands:
-    - source build.sh
+    - source ./build.sh
     
 - name: Release
   image: x0rzavi/gentoo-kernel:latest
@@ -28,4 +28,4 @@ steps:
     GITHUB_CLI_TOKEN:
       from_secret: GITHUB_CLI_TOKEN
   commands:
-    - bash upload.sh
+    - source ./upload.sh
