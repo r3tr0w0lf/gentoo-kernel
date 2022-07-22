@@ -20,7 +20,7 @@ steps:
 - name: Build
   image: x0rzavi/gentoo-kernel:latest
   commands:
-    - bash build.sh
+    - source build.sh
     
 - name: Release
   image: x0rzavi/gentoo-kernel:latest
