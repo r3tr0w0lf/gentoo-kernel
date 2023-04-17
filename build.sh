@@ -17,13 +17,13 @@ verbosity () {
 
 kernel_prepare () {
     cd /usr/src/linux
-    cp CONFIGS/xanmod/gcc/config_x86-64-v3 .config
+#     cp CONFIGS/xanmod/gcc/config_x86-64-v3 .config
     export SHELL=/bin/bash
     time make -j$(nproc) olddefconfig
-    for patch in $workdir/patches/*
-    do
-        patch < $patch
-    done
+#     for patch in $workdir/patches/*
+#     do
+#         patch < $patch
+#     done
     #wget -O .config --quiet https://raw.githubusercontent.com/x0rzavi/gentoo-bits/main/config-5.16.14-gentoo-x0rzavi
 	grep "CONFIG_LOCALVERSION=" -F .config
     echo ""
@@ -31,7 +31,7 @@ kernel_prepare () {
 }
 
 kernel_tag () {
-    version=$(grep 'Linux/x86' /usr/src/linux/.config | sed 's/# Linux\/x86 /linux-/;s/ Kernel Configuration/-xanmod/')
+    version=$(grep 'Linux/x86' /usr/src/linux/.config | sed 's/# Linux\/x86 /linux-/;s/ Kernel Configuration//')
     seconds=$(stat -c '%X' /usr/src/linux/.config)
     tag="$version-$seconds"
     echo $tag > $workdir/release_tag
