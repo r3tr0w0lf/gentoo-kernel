@@ -18,9 +18,10 @@ trigger:
   
 steps:
 - name: Build
-  image: x0rzavi/gentoo-kernel:latest
+#   image: x0rzavi/gentoo-kernel:latest
   commands:
-    - source ./build.sh
+#     - source ./build.sh
+    - sudo apt update
     
 - name: Release
   image: x0rzavi/gentoo-kernel:latest
